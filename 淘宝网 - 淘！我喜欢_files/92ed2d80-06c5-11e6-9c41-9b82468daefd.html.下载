@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- saved from url=(0348)https://a1.alicdn.com/oss/uploads/2016/04/20/92ed2d80-06c5-11e6-9c41-9b82468daefd.html#st_type=15_18&name=smad&adgrid=835136301&clk1info=2110542306,88,9uUpjzLak2bap39BtT%2Fh9DbtZtd6C6oX2Rcy%2BVfyQrx66ugqMRzRrHiOibOo%2B5hNYk0X73Y3eGenTchkRKLOtg%3D%3D&sbid=31433&p4p_size=520x280&pvid=44fbb40b530a09405ac0c42fb4d73cf7&pid=mm_12852562_1778064_13672849 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>html,body{height:100%;margin:0}</style><script type="text/javascript" defer="" async="" src="./uaest.js.下载"></script><style>@font-face{font-family:uc-nexus-iconfont;src:url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.woff) format('woff'),url(chrome-extension://pogijhnlcfmcppgimcaccdkmbedjkmhi/res/font_9qmmi8b8jsxxbt9.ttf) format('truetype')}</style></head><body marginwidth="0" marginheight="0"><div id="p4p"><iframe src="./creation-21904D8RvrrGl5r41-2679843.html.下载" style="width:520px;height:280px" border="0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true"></iframe></div><script>
+
+var args = (location.hash || location.search).slice(1).replace("?pid=", "&pid=")
+
+getScript("//tns.simba.taobao.com/?" + args.replace(/p4p_size(=\d+x\d+)/i,"size$1") + (/(&|^)name=.+/.test(args) ? "&p4p=cb" : "&name=crtopt&p4p=cb"))
+
+function cb(data) {
+    p4pdata = data.data[0].adList
+    var url = data.data[0].templateUrl.replace(/(https?)?:\/\/[^/]+/, "//" + location.host)
+
+    var html = '<iframe src="{src}" style="width:{width}px;height:{height}px" border="0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true"></iframe>'
+
+    var size = args.match(/(?:^|&)p4p_size=([^&]+)/i)[1]
+    var arr = size.split(/x/i)
+    var width = arr[0]
+    var height = arr[1]
+
+    html = html.replace("{src}", url).replace("{width}", width).replace("{height}", height)
+    document.getElementById("p4p").innerHTML = html
+}
+
+function getScript(url, callback, charset) {
+    var head = document.head || document.getElementsByTagName("head")[0] || document.documentElement
+    var script = document.createElement("script")
+    script.src = url
+    script.async = true
+    script.charset = charset || "utf-8"
+    script.onload = script.onreadystatechange = function () {
+        if(!script.readyState || /loaded|complete/.test(script.readyState)) {
+            script.parentNode.removeChild(script)
+            script.onload = script.onreadystatechange = null
+            script = null
+            if(callback && typeof callback == "function") {
+                callback()
+            }
+        }
+    }
+    head.appendChild(script)
+}
+
+</script></body></html>

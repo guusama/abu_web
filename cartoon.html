@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			width: 390px;
+			height: 380px;
+			margin: 0 auto;
+			background: #BDBDBD;
+		}
+		a{
+			display: inline-block;
+			float: left;
+			width: 100px;
+			height: 140px;
+			margin-right: 10px;
+			margin-left: 10px;
+			margin-top: 10px;
+			border: 2px solid pink;
+			padding-top: 20px;
+			padding-left: 5px;
+			background:#BBFFFF; 
+			overflow: hidden;
+			position: relative;
+			text-decoration: none;
+		}
+		a:hover{
+			color: red;
+		}
+		i{
+			margin-top: 20px;
+			display: inline-block;
+
+		}
+		p{
+			text-align: center;
+		}
+	</style>
+</head>
+<body >
+	<div id="div1">
+		<a href="#"><i><img src="images/1.png"/></i><p>蜗牛</p></a>
+		<a href="#"><i><img src="images/2.png"/></i><p>手眼</p></a>
+		<a href="#"><i><img src="images/3.png"/></i><p>多面体</p></a>
+		<a href="#"><i><img src="images/4.png"/></i><p>饮品</p></a>
+		<a href="#"><i><img src="images/5.png"/></i><p>偷看</p></a>
+		<a href="#"><i><img src="images/6.png"/></i><p>小鸟</p></a>
+	</div>
+	<script src="move.js"></script>
+	<script type="text/javascript">
+		var div1=document.getElementById('div1');
+		var aList=div1.getElementsByTagName('a');
+		for(var i=0;i<aList.length;i++){
+			aList[i].onmouseover=function() {
+				// body...
+				var _this=this.getElementsByTagName('i')[0];
+				startMove(_this,{'margin-top':-25,'opacity':0},function(){
+					_this.style[margin-top]=20+'px';
+					startMove(_this,{'margin-top':20,'opacity':100});
+				});
+			}
+			aList[i].onmouseout=function() {
+				// body...
+				var _this=this.getElementsByTagName('i')[0];
+				//_this.style.margin-top=20+'px';
+				startMove(_this,{'margin-top':20,'opacity':100},);
+			}
+
+
+		}
+	</script>
+
+</body>
+</html>

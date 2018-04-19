@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
+	<style type="text/css">
+	    .left,.right{
+	    	width: 220px;
+	    	height: 120px;
+	    }
+		.left div,
+		.right div{
+			width: 100px;
+			height: 100px;
+			margin-left: 5px;
+			float: left;
+			border:1px solid red;
+		}
+		.left div{
+			background: pink;
+		}
+		.right div{
+			background: gray;
+		}
+	</style>
+</head>
+<body>
+	<h2>jQuery.data()方法</h2>
+	<div class="left">
+		<div class="aaron">
+			<p>点击查看结果</p>
+			<p>jQuery.data</p>
+		</div>
+		<div><span></span></div>
+	</div>
+	<h2>.data()实例方法</h2>
+	<div class="right">
+		<div class="arron">
+			<p>点击查看结果</p>
+			<p>.data</p>
+		</div>
+		<div><span></span></div>
+	</div>
+<script type="text/javascript">
+	$('.left').click(function(){
+		var ele=$(this);
+		$.data(ele,"a","data test")
+		$.data(ele,"b","慕课网")
+
+		var reset=$.data(ele,"a")+"</br>"+$.data(ele,"b")
+		ele.find('span').append(reset);
+	});
+	$('.right').click(function(){
+		var ele=$(this);
+		ele.data("a","data test");
+		ele.data("b",{
+			name:"慕课网"
+		});
+		var reset=ele.data("a")+"</br>"+ele.data("b").name;
+		ele.find('span').append(reset);
+	});
+</script>
+</body>
+</html>

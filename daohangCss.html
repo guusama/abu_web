@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.divout{
+			margin: 0;
+			padding: 0;
+			width: 190px;
+			box-shadow:3px 3px 3px #DEDEDE;
+			z-index: 4;
+			float: left;
+		}
+		.divtag{
+			width: 190px;
+			height: 170px;
+			text-align: center;
+		}
+		.ul1{
+			margin: 0;
+			list-style-type: none;
+			width: 190px;
+			border:1px solid #F2F2F2;
+			overflow: hidden;
+			padding-top: 10px;
+		}
+		.ul li{
+			display: block;
+			
+		}
+		.divint{
+			display: none;
+			position: absolute;
+			z-index: 20;
+			left: 190px;
+			top: 170px;
+			width: 1000px;
+			height: 480px;
+			float: left;
+			box-shadow:1px 1px 1px 1px #DEDEDE;
+			background: white;
+
+		}
+		.ul1 li a{
+			display: block;
+			text-decoration: none;
+			color: #686868;
+			height: 28px;
+			line-height: 28px;
+			font-size: 14px;
+			padding-left: 12px;
+		}
+		.ul1 li a:hover{
+			color: #CD3333;
+			font-weight: bold;
+			background: #C9C9C9;
+		}
+		.ul1 li:hover .divint{
+			display: block;
+		}
+		.ul1 li:hover a{
+			background: #C9C9C9;
+		}
+		.ul1 li:hover .dlint a{
+			background: none;
+		}
+		.ul1 li:hover .dlint2 a{
+			background: none;
+		}
+		.leftdiv{
+			float: left;
+			margin: 0;
+			padding: 0;
+			width: 800px;
+			overflow: hidden;
+		}
+		.dlint{
+			margin-top: 15px;
+			width: 800px;
+		}
+		.dlint dd{
+			float: left;
+			height: 23px;
+			line-height: 23px;
+			margin-left: 8px;
+			background: #383838;
+			text-align: left;
+			background-image: url(箭头.png);
+			background-repeat: no-repeat;
+			background-position: right;
+
+		}
+		.dlint dd a{
+			display: block;
+			margin-right: 30px;
+			color: white;
+			text-align: center;
+			font-size: 12px;
+			padding-bottom: 5px;
+		}
+		.dlint dd:hover{
+			opacity: 0.7;
+			filter: alpha(opacity:70);
+		}
+		.dlint2{
+			width: 800px;
+			display: block;
+			margin-top: 10px;
+		}
+		.dlint2 dt{
+			display: block;
+			float: left;
+			width: 60px;
+			text-align: right;
+			height: 22px;
+			line-height: 22px;
+			padding-right: 6px;
+			color: #e4393c;
+			font-weight: bold;
+			
+		}
+		.dlint2 dd{
+			display: block;
+			overflow: hidden;
+			margin-left: 20px;
+		}
+		.dlint2 dd a{
+			height: 15px;
+			display: block;
+			float: left;
+			border-left: 1px solid gray;
+			font-size: 12px;
+			padding:2px 5px 2px 5px;
+			padding-top: 3px;
+			line-height: 12px;
+			margin: 4px 0;
+			color: gray;
+		}
+		.rightdiv{
+			margin-top:15px;
+			padding: 0;
+			width: 190px;
+			overflow: hidden;
+			float: right;
+		}
+		.rightdiv img{
+			display: block;
+			margin-bottom: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="divout">
+		<div class="divtag"><img src="京东.png"/></div>
+		<ul class="ul1">
+			<li><a href="#">家用电器</a>
+				<div class="divint">
+					<div class="leftdiv">
+					<dl class="dlint">
+						<dd><a href="#">家电馆</a></dd>
+						<dd><a href="#">乡镇专卖店</a></dd>
+						<dd><a href="#">家电服务</a></dd>
+						<dd><a href="#">家电企业购</a></dd>
+						<dd><a href="#">商用电器</a></dd>
+					</dl>
+					<br/>
+					<dl class="dlint2">
+						<dt><a href="#">电视</a></dt>
+						<dd><a href="#">曲面电视</a>
+						<a href="#">超薄电视</a>
+						<a href="#">HDR电视</a>
+						<a href="#">OLED电视</a>
+						<a href="#">4K超清电视</a>
+						<a href="#">人工智能电视</a>
+						<a href="#">55英寸</a>
+						<a href="#">65英寸</a>
+						<a href="#">电视配件</a>
+						<a href="#">曲面电视</a>
+						<a href="#">超薄电视</a>
+						<a href="#">HDR电视</a>
+						<a href="#">OLED电视</a>
+						<a href="#">4K超清电视</a>
+						<a href="#">人工智能电视</a>
+						<a href="#">55英寸</a>
+						<a href="#">65英寸</a>
+						<a href="#">电视配件</a>
+					</dd>
+						
+					</dl>
+					<br/>
+							
+		
+	    </div>
+	    <div class="rightdiv">
+		<img src="brand1.png"/>
+		<img src="brand2.png"/>
+		<img src="brand3.png"/>
+		</div>
+	</div>
+				</li>
+			<li><a href="">手机/运营商/数码</a></li>
+			<li><a href="">电脑/办公</a></li>
+			<li><a href="">家具/家具/家装/厨具</a></li>
+			<li><a href="">男装/女装/童装/内衣</a></li>
+			<li><a href="">美妆个护/宠物</a></li>
+			<li><a href="">女鞋/箱包/钟表/珠宝</a></li>
+			<li><a href="">男鞋/运动/户外</a></li>
+			<li><a href="">房产/汽车/汽车用品</a></li>
+			<li><a href="">母婴/玩具乐器</a></li>
+			<li><a href="">食品/酒类/生鲜/特产</a></li>
+			<li><a href="">艺术/礼品鲜花/农贸绿植</a></li>
+			<li><a href="">药品保健/计生情趣</a></li>
+			<li><a href="">图书/音像/电子书</a></li>
+			<li><a href="">机票/酒店/旅游/生活</a></li>
+			<li><a href="">理财/众筹/白条/保险</a></li>
+		</ul>
+	</div>
+	
+
+</body>
+</html>

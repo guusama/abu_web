@@ -1,0 +1,19 @@
+
+jsonp712({hasLoggedIn: false,
+hasPhantomLoggedIn: true,
+isFastBuy: false,
+success: true,
+isNew:false,
+jfbType:"normal",
+discountPrice:"0.0",
+adtext:"",
+adhref:"  ",
+adtext2:"",
+adhref2:"",
+adimage2:"",
+pmid:"1501049012d8496d6089",
+resource:"2",
+ratio:""
+
+
+})

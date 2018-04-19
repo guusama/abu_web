@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
+	<style type="text/css">
+		.div1,
+		.div2 {
+			width: 150px;
+			height: 150px;
+			padding: 5px;
+			margin: 5px;
+			float: left;
+			border: 1px solid #ccc;
+			background: #bbffaa;
+		}
+		ul{
+			width: 100px;
+			height: 100px;
+		}
+		.aaron1,.aaron2{
+			background-color: #999999;
+		}
+	</style>
+</head>
+<body>
+	<h2>DOM包裹unwrap()方法</h2>
+	<div class="main">
+		<div class="aaron1">点击，通过add传递元素标签</div>
+		<div class="aaron2">点击，通过add传递html结构</div>
+	</div>
+	<div class="div1">
+		<ul>
+			<li>list item 1</li>
+			<li>list item 2</li>
+			<li>list item 2</li>
+		</ul>
+		<p>我是P元素</p>
+	</div>
+	<div class="div2"></div>
+	<script type="text/javascript">
+		$(".aaron1").on('click',function () {
+			$('li').each(function (index,element) {
+			    if(index%2==0){
+                    $(this).css('color','blue');
+				}else{
+                    $(this).css('color','red');
+				}
+            });
+        });
+		$(".aaron2").on('click',function () {
+            $('li').add('<p>哈哈，我是新的P元素</p>').appendTo('.div2');
+        })
+		$('.div2').click(function(){
+		    alert('haha');
+		})
+	</script>
+
+</body>
+</html>
