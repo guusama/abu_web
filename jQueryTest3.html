@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>keydown()与keyup()事件</title>
+    <script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
+    <style>
+        .div1{
+            width: 100px;
+            height: 100px;
+            background-color: #52a0e5;
+        }
+    </style>
+</head>
+<body>
+<h2>fadeout</h2>
+<h4>测试文字淡入效果</h4>
+<h4>慕课网，专注分享</h4>
+淡入淡出的隐藏效果：
+<select id="animation">
+    <option value="1">fadeToggle()</option>
+    <option value="2">fadeToggle("slow")</option>
+    <option value="3">fadeToggle("3000")</option>
+    <option value="4">fadeToggle(1000,complete)</option>
+    <option value="5">fadeToggle(1000,"linear")</option>
+    <option value="6">fadeToggle(options)</option>
+</select>
+<br/><br/>
+<input id="btnFadeOut" type="button" value="点击显示/隐藏"/>
+<input id="btnShow" type="button" value="点击淡入显示"/>
+
+<script type="text/javascript">
+
+    $('#btnFadeOut').click(function () {
+        var v=$('#animation').val();
+        switch (v){
+            case "1":$('h4').fadeToggle();break;
+            case "2":$('h4').fadeToggle("slow");break;
+            case "3":$('h4').fadeToggle(3000);break;
+            case "4":$('h4').fadeToggle(1000,function () {
+                alert("加载完成");
+            });break;
+            case "5":$('h4').fadeToggle(1000,"linear");break;
+            case "6":$('h4').fadeToggle({
+                duration:1000
+            });
+        }
+
+    })
+    $('#btnShow').click(function () {
+        var v=$('#animation').val();
+        switch (v){
+            case "1":$('h4').fadeIn();break;
+            case "2":$('h4').fadeIn("slow");break;
+            case "3":$('h4').fadeIn(3000);break;
+            case "4":$('h4').fadeIn(1000,function () {
+                alert("加载完成");
+            });break;
+            case "5":$('h4').fadeIn(1000,"linear");break;
+            case "6":$('h4').fadeIn({
+                duration:1000
+            });
+        }
+    });
+</script>
+<br/>
+<h2>fadeTo</h2>
+<h3>测试文字透明度效果</h3>
+<h3>慕课网，专注分享</h3>
+透明度的设置效果：
+<select id="animation2">
+    <option value="1">fadeTo( "slow" ,0.5 )</option>
+    <option value="2">fadeTo( 1000 ,0.2 )</option>
+    <option value="3">fadeTo( 1000 ,0.9 ,complete)</option>
+</select>
+<input id="btnFadeSwitch" type="button" value="点击切换显示">
+<input id="btnFadeSwitch2" type="button" value="点击切换隐藏">
+<script type="text/javascript">
+    $('#btnFadeSwitch').click(function () {
+        var v=$('#animation2').val();
+        switch (v){
+            case "1":$('h3').fadeTo("slow",0.5);break;
+            case "2":$('h3').fadeTo(1000,0.2);break;
+            case "3":$('h3').fadeTo(1000,0.9);break;
+        }
+    });
+    $('#btnFadeSwitch2').click(function () {
+        $('h3').fadeOut();
+    });
+</script>
+<br/>
+<h2>toggle与slideToggle以及fadeToggle的比较</h2>
+<p>测试文字淡入效果</p>
+<p>慕课网，专注分享</p>
+动画切换：
+<select id="animation4">
+    <option value="1">toggle()</option>
+    <option value="2">slideToggle()</option>
+    <option value="3">fadeToggle()</option>
+</select>
+<br/><br/>
+<input id="btnChange" type="button" value="点击切换"/>
+
+<script type="text/javascript">
+    $('#btnChange').click(function () {
+        var v=$('#animation4').val();
+        switch (v){
+            case "1":$('p').toggle();break;
+            case "2":$('p').slideToggle();break;
+            case "3":$('p').fadeToggle();break;
+        }
+    });
+</script>
+<br/>
+<h2>animate(上)</h2>
+<p>慕课网，专注分享</p>
+<div class="div1">
+    <p>内部动画</p>
+</div>
+点击观察动画效果：
+<select id="animation5">
+    <option value="1">动画1</option>
+    <option value="2">动画2</option>
+    <option value="3">动画3</option>
+    <option value="4">动画4</option>
+</select>
+<input type="button" value="执行动画" id="btnAnim"/>
+<script type="text/javascript">
+    $('#btnAnim').click(function () {
+        var v=$('#animation5').val();
+        switch (v){
+            case "1":$('.div1').animate({
+                width:200,
+                height:200
+            });break;
+            case "2":$('.div1').animate({
+                width:"+=100px",
+                height:"+=100px"
+            });break;
+            case "3":$('.div1 p:first').animate({
+                fontSize:"5em"
+            },2000,function () {
+                alert("字体动画加载完成！");
+            });break;
+            case "4":$('.div1').animate({
+                width:"toggle"
+            });
+        }
+    });
+</script>
+</body>
+</html>

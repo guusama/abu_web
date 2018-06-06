@@ -5,12 +5,13 @@
     <title>jQuery鼠标事件之mousemove</title>
     <script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
     <style type="text/css">
-        .left,.right{
+        div{
             width: 300px;
             height: 100px;
             background-color: #52a0e5;
             text-align: center;
             padding-top: 10px;
+            margin-bottom: 10px;
         }
         .right p,
         .left p{
@@ -60,7 +61,46 @@
         $('.right a:last').html('mouseover冒泡事件触发次数：'+(++j));
     })
 </script>
-
+<h2>.focusin方法</h2>
+<div class="left2">
+    点击聚焦：<input type="text"/>
+</div>
+<script type="text/javascript">
+    $('.left2 input:first').focusout(function(){
+        $(this).css('border','2px solid red');
+    });
+</script>
+<div class="right2">
+    点击聚焦并传递参数：<input type="text"/>
+</div>
+<script type="text/javascript">
+    $('.right2 input:first').focusout('慕课网',focus);
+    function focus(e) {
+        $(this).val(e.data);
+    }
+</script>
+<h2>input/textarea/select</h2>
+<div>
+    input:<input class="input1" type="text" value="姓名"/>
+</div>
+<div>
+    select:<select type="text" class="select1">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+</select>
+</div>
+<div>
+    textarea:<textarea class="textarea1" rows="3" cols="20">多行文本输入</textarea>
+</div>
+输出结果：
+<p class="p2"></p>
+<script type="text/javascript">
+    function change1(e){
+        $('.p2').html(e.target.value);
+    }
+    $('.input1').change(change1);
+    $('.select1').change(change1);
+    $('.textarea1').change(change1);
 </script>
 </body>
 </html>

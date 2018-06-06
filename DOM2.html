@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 200px;
+            height:100px;
+            background-color: #f6f6f6;
+            border: 1px solid gray;
+            position:absolute;
+            left: 200px;
+            top: 200px;
+            display: none;
+        }
+        .p1{
+            height: 20px;
+            border-bottom: 1px solid gray;
+        }
+        .p1 span{
+            float:right;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+亲，您好！
+<input type="button" value="登录" id="btn"/>
+<div id="div1">
+    <p class="p1">用户登录<span id="close">X</span></p>
+</div>
+<script type="text/javascript">
+    var btn1=document.getElementById('btn');
+    var div1=document.getElementById('div1');
+    var close=document.getElementById('close');
+    var EventUtil={
+        addHandler:function (element,type,handler) {
+            if (element.addEventListener){
+                element.addEventListener(type,handler,false);
+            } else if (element.attachEvent){
+                element.attachEvent("on"+type,handler);
+            }else{
+                element["on"+type]=handler;
+            }
+        }
+    }
+    var summit=function () {
+        div1.style.display="block";
+    }
+    EventUtil.addHandler(btn1,'click',summit);
+    var closeX=function () {
+        div1.style.display="none";
+    }
+    EventUtil.addHandler(close,'click',closeX);
+    EventUtil.addHandler(window,'resize',function (e) {
+        alert('resized');
+    });
+</script>
+</body>
+</html>

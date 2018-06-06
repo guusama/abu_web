@@ -107,6 +107,33 @@
 			},30);
 
 		}
+
+		//跨浏览器事件处理程序
+		var EventUtil={
+		    addHandler:function (element,type,handler) {
+				if (element.addEventListener){
+				    element.addEventListener(type,handler,false);
+				} else if (element.attachEvent){
+				    element.attachEvent(type,handler);
+				} else {
+				    element['on'+type]=handler;
+				}
+            },
+            removeHandler:function (element,type,handler) {
+				if (element.removeEventListener){
+				    element.removeEventListener(type,handler,false);
+				} else if(element.datachEvent){
+				    element.datachEvent(type,handler);
+				}else {
+				    element['on'+type]=null;
+				}
+            }
+		};
+        var image=document.getElementsByTagName('img')[0];
+        var handler=function (e) {
+			alert(e.type);
+        }
+        EventUtil.addHandler(image,'load',handler);
 	</script>
 </head>
 <body>
@@ -114,6 +141,7 @@
 		<li id="li1"></li>
 		<li id="li2">显示时间</li>
 	</ul>
+<img src="京东.png" />
 
 </body>
 </html>

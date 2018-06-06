@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .outer-wrap{
+            width: 100%;
+            overflow-x:auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            -ms-overflow-style: none;
+        }
+        .item{
+            display: inline-flex;
+        }
+        .outer-wrap::-webkit-scrollbar{
+            display: none;
+        }
+        .Caption{
+            max-width: 4rem;
+            padding-left: .5rem;
+            font-size: 1.2rem;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+<h1>Top grossing films of 2014</h1>
+<nav class="outer-wrap">
+    <figure class="item">
+        <img src="images/1.PNG" alt="Guardians of the Galaxy"/>
+        <figcaption class="Caption">Guardians of the Galaxy</figcaption>
+    </figure>
+    <figure class="item">
+        <img src="images/2.PNG" alt="The Hunger Games: Mockingjay - Part 1"/>
+        <figcaption class="Caption">The Hunger Games: Mockingjay - Part 1</figcaption>
+    </figure>
+    <figure class="item">
+        <img src="images/3.PNG" alt="Captain America: The Winter Soldier"/>
+        <figcaption class="Caption">Captain America: The Winter Soldier</figcaption>
+    </figure>
+    <figure class="item">
+        <img src="images/4.PNG" alt="The Lego Movie"/>
+        <figcaption class="Caption">The Lego Movie</figcaption>
+    </figure>
+</nav>
+</body>
+</html>

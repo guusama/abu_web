@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #p1{
+            width: 200px;
+            height: 30px;
+            border:1px solid gray;
+            padding-top: 7px;
+        }
+        #p1 span{
+            float:right;
+            margin-right: 10px;
+        }
+        ul{
+            list-style: none;
+            width: 200px;
+            height: 125px;
+            border: 1px solid gray;
+            display: none;
+        }
+        ul li{
+            line-height: 25px;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<p id="p1">请选择分类<span>*</span></p>
+<ul>
+    <li>ASP开发</li>
+    <li>.NET开发</li>
+    <li>.PHP开发</li>
+    <li>Javascript开发</li>
+    <li>Java特效</li>
+</ul>
+<script type="text/javascript">
+    var EventUtil={
+        //添加事件
+        addHandler:function (element,type,handler) {
+            if (element.addEventListener){
+                element.addEventListener(type,handler,false);
+            } else if (element.attachEvent){
+                element.attachEvent("on"+type,handler);
+            }else{
+                element["on"+type]=handler;
+            }
+        },
+        //删除事件
+        removeHandler:function(element,type,handler){
+            if (element.removeEventListener){
+                element.removeEventListener(type,handler,false);
+            }else if(element.detachEvent){
+                element.detachEvent('on'+type,handler);
+            }else{
+                element['on'+type]=handler;
+            }
+        },
+        //获取event对象的引用
+        getEvent:function (event) {
+            return event?event:window.event;
+        },
+        //获取事件的目标
+        getTarget:function (event) {
+            return event.target||event.scrElement;
+        },
+        //阻止事件冒泡
+        stopPropagation:function (event) {
+            if (event.stopPropagation){
+                event.stopPropagation();
+            } else{
+                event.cancelBubble=true;
+            }
+        },
+        //阻止默认事件
+        preventDefault:function (event) {
+            if (event.preventDefault){
+                event.preventDefault();
+            } else{
+                event.returnValue=false;
+            }
+        },
+        //获取键盘编码
+        getCharCode:function (event) {
+            if(typeof event.charCode=='number'){
+                return event.charCode;
+            }else{
+                return event.keyCode;
+            }
+        }
+    }
+    var p1=document.getElementById('p1');
+    var ul1=document.getElementsByTagName('ul')[0];
+    var lis=document.getElementsByTagName('li');
+    var mousedown=function () {
+        ul1.style.display='block';
+    };
+    EventUtil.addHandler(p1,'click',mousedown);
+    for (var i=0;i<lis.length;i++){
+        EventUtil.addHandler(lis[i],'mouseover',function () {
+            this.style.backgroundColor='pink';
+        });
+        EventUtil.addHandler(lis[i],'mouseout',function () {
+            this.style.backgroundColor='';
+        });
+        EventUtil.addHandler(lis[i],'mousedown',function () {
+            ul1.style.display='none';
+            p1.innerHTML=this.innerHTML;
+            var span=document.createElement('span');
+            span.innerHTML='*';
+            //var text=document.createTextNode('*');
+            //span.appendChild(text);
+            p1.appendChild(span);
+        });
+    }
+    var index=-1;
+    EventUtil.addHandler(document,'keyup',function (event) {
+        event=EventUtil.getEvent(event);
+        if (event.keyCode==40){
+            index++;
+            if(index>4){
+                index=0;
+            }
+            lis[index].style.backgroundColor='pink';
+            lis[(index-1)<0?4:(index-1)].style.backgroundColor='';
+        }
+        if (event.keyCode==38){
+            index--;
+            if(index<0){
+                index=4;
+            }
+            lis[(index+1)>4?0:(index+1)].style.backgroundColor='';
+            lis[index].style.backgroundColor='pink';
+        }
+        if (event.keyCode==13){
+            ul1.style.display='none';
+            p1.innerHTML=lis[index].innerHTML;
+
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlexBox2</title>
+    <style type="text/css">
+        .CenterMe{
+            background-color: indigo;
+            color: #ebebeb;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .MenuWrap{
+            background-color: indigo;
+
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            min-height: 2.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 1rem;
+
+        }
+        .LastItem,
+        .ListItem{
+            text-decoration: none;
+            color: #ebebeb;
+            line-height: 1.5rem;
+
+        }
+        .InlineFlex{
+            display: inline-flex;
+            align-items: center;
+            height: 120px;
+            padding: 0 4px;
+            background-color: indigo;
+            text-decoration: none;
+            border-radius: 3px;
+            color: #DDDDDD;
+        }
+    </style>
+</head>
+<body>
+<div class="MenuWrap">
+    <a href="#" class="ListItem">Home</a>
+    <a href="#" class="ListItem">About Us</a>
+    <a href="#" class="ListItem">Products</a>
+    <a href="#" class="ListItem">policy</a>
+    <a href="#" class="LastItem">Contact Us</a>
+</div>
+<p>Here is a sentence with a <a href="#" class="InlineFlex">inline-flex link</a></p>
+
+</body>
+</html>

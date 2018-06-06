@@ -7,7 +7,44 @@
 <script language="javascript" type="text/javascript">
 
   window.onload = function(){
-    showTime();
+      showTime();
+      loadStyleString("body{background-color:red}");
+      createTablefun();
+      var button=document.getElementById('myButton');
+      button.focus();
+      alert(document.hasFocus());
+  }
+  function createTablefun() {
+      var table=document.createElement('table');
+      var tbody=document.createElement('tbody');
+      table.border=1;
+      table.width="100%";
+      table.bgColor="green";
+      table.appendChild(tbody);
+      tbody.insertRow(0);
+      tbody.rows[0].insertCell(0);
+      tbody.rows[0].cells[0].appendChild(document.createTextNode("Cell 1.1"));
+      tbody.rows[0].insertCell(1);
+      tbody.rows[0].cells[1].appendChild(document.createTextNode("Cell 1.2"));
+
+      tbody.insertRow(1);
+      tbody.rows[1].insertCell(0);
+      tbody.rows[1].cells[0].appendChild(document.createTextNode("Cell 2.1"));
+      tbody.rows[1].insertCell(1);
+      tbody.rows[1].cells[1].appendChild(document.createTextNode("Cell 2.2"));
+      document.body.appendChild(table);
+
+  }
+  function loadStyleString(css) {
+      var style=document.createElement('style');
+      style.type="text/css";
+      try{
+          style.appendChild(document.createTextNode(css));
+      }catch (e) {
+          style.styleSheet.cssText=css;
+      }
+      var head=document.getElementsByTagName('head')[0];
+      head.appendChild(style);
   }
   function checkTime(i){  //补位处理
     if(i/10<1){
@@ -43,7 +80,7 @@
     document.getElementById("show2").innerHTML=lastTime;
     
     //限时抢
-    var endTime2=new Date('2018-04-04 20:36:00');
+    var endTime2=new Date('2018-05-04 20:36:00');
     var lastHao=(endTime2.getTime()-now.getTime())/1000;//获得秒数
     var endDay=parseInt(lastHao/(60*60*24));
     var endHours=parseInt(lastHao/(60*60)%24);
@@ -61,6 +98,7 @@
 
   }
 
+
 </script>
 </head>
 <body>
@@ -68,6 +106,8 @@
   <div id="show">显示时间的位置</div>
   <div >距离高考<span id="show2">？</span>天</div>
   <div>限时抢：<span id="show3"></span></div>
+  <div id="muDiv" class="bd" title="Body text" lang="en" dir="ltr">这里是内容</div>
+  <div id="myButton">我哈哈哈哈</div>
 </div>
 </body>
 </html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <style type="text/css">
+        #demoForm{
+            width: 300px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<form id="demoForm">
+    <fieldset>
+        <legend>用户登陆</legend>
+        <p>
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username"/>
+        </p>
+        <p>
+            <label for="password">密 &nbsp;&nbsp;&nbsp;码</label>
+            <input type="password" id="password" name="password"/>
+        </p>
+        <p>
+            <input type="submit" value="登录"/>
+        </p>
+    </fieldset>
+</form>
+<input type="button" value="点击跳转" id="changebtn"/>
+<script type="text/javascript">
+    var fieldset=document.getElementsByTagName('fieldset')[0];
+    alert(fieldset.childNodes.length);
+    /*
+    var leftPos=(typeof window.screenLeft=='number')?window.screenLeft:window.screenX;
+    alert(leftPos);
+    var pageWidth=window.innerWidth,
+        pageHeight=window.innerHeight;
+    var windowWidth=window.outerWidth,
+        windowHeight=window.outerHeight;
+    if (window.print("页面内容大小"+pageWidth+" "+pageHeight)){
+        alert("哈哈，真棒！");
+    } else {
+        alert("不行的！");
+    }
+
+    alert("窗口大小："+windowWidth+" "+windowHeight);
+    var w=window.open("http://www.wrox.com/","topFrame");
+    alert(w.opener==window);
+    if(typeof pageWidth!='number'){
+
+    }
+    window.moveTo(200,300);
+    */
+    var changebtn=document.getElementById('changebtn');
+    changebtn.onclick=function () {
+        history.go(-1);
+    }
+    var xhr=new ActiveXObject("Microsoft.XMLHttp");
+    function isHostMethod(object,property) {
+        var t=typeof object[property];
+        return t=='function'||(!!(t=='object'&& object[property]))||t=='unknown';
+    }
+    var result=isHostMethod(xhr,"open");
+    alert(result);
+    function getQueryStringArgs(qs) {
+        var qs=(qs.length>0)?qs.substring(1):" ";
+        args={};
+        //取得每一项
+        var items=qs.length?qs.split('&'):"";
+        var item=null,
+            name=null,
+            value=null;
+        for(var i=0;i<items.length;i++){
+            item=items[i].split('=');
+            name=item[0];
+            value=item[1];
+            if (name.length){
+                args[name]=value;
+            }
+
+        }
+        return args;
+    }
+    var args=getQueryStringArgs('?q=javascript&num=10');
+    function hasPlugin(name) {
+        name=name.toLowerCase();
+        for (var i=0;i<navigator.plugins.length;i++){
+            if (navigator.plugins[i].name.toLowerCase().indexOf(name)>-1){
+                return true;
+            }
+        }
+        return false;
+    }
+    alert("QuickTime:"+hasPlugin("QuickTime"));
+    alert(screen.pixelDepth);
+
+    var validator;
+    $(document).ready(function () {
+        validator=$('#demoForm').validate({
+            rules:{
+                username:{
+                    required:true,
+                    minlength:2,
+                    maxLength:10
+                },
+                password:{
+                    required:true,
+                    minlength:2,
+                    maxLength:16
+                },
+
+            },
+                messages:{
+                    username:{
+                        required:"必须填写用户名",
+                        minlength:"最小为2个字符",
+                        maxLength:"最大为10个字符"
+                    },
+                    password:{
+                        required:"必须填写用户名",
+                        minlength:"最小为2个字符",
+                        maxLength:"最大为16个字符"
+                    }
+                },
+        }
+
+        )
+    })
+
+</script>
+</body>
+</html>

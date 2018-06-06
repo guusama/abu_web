@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>responsivePicture</title>
+    <style type="text/css">
+        .p1{
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+            column-count: 2;
+            -webkit-column-gap: 2em;
+            -moz-column-gap: 2em;
+            column-gap: 2em;
+            column-rule: thin dotted #999999;
+            -webkit-column-rule: thin dotted #999999;
+            -webkit-column-width: 12em;
+            -moz-column-width: 12em;
+            column-width: 12em;
+            word-break: break-all;
+        }
+        .truncate{
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<img srcset="京东.png 900w,images/1.PNG 450w" sizes="(min-width:17em) 100vw,(min-width:40em) 50vw" src="images/2.PNG" alt="Scones">
+<picture>
+    <source media="(min-width:200px)" srcset="京东.png">
+    <source media="(min-width:500px)" srcset="images/1.png">
+    <img src="箭头.png" alt="One way or another,you will get cake">
+</picture>
+<figure>
+    <p>黄浦江大桥</p>
+    <img src="images/5.PNG" alt="Incredible scones"/>
+    <figcaption>Incredible scones,pictures from Wikipedia</figcaption>
+</figure>
+<details open>
+    <summary>I ate 15 scones in one day</summary>
+    <p>Of course I didn't. It would probably kill me if I did. what a way to go.Mmmmmm,scones!</p>
+    <img src="images/4.PNG"/>
+</details>
+<video src="0-3.mp4" controls="controls" height="270px" width="480px" poster="images/2.PNG" preload="auto">您的浏览器不支持 video 标签。</video>
+<p class="truncate">
+    Virtual reality (VR) has achieved impressing developments in recent years and is expected to make great improvements
+</p>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流布局</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #main{
+            position: relative;
+        }
+        .box{
+            padding: 15px 0 0 15px;
+            float: left;
+        }
+        .pic{
+            padding: 5px;
+
+            border-radius: 5px;
+            box-shadow: 2px 2px 6px gray;
+        }
+        .pic img{
+            width: 165px;
+            height: auto;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            waterFall('#main','.box');
+        })
+        function waterFall(parent,box) {
+            var oparent=$(parent);
+            var boxs=$(box);
+            console.log(boxs[0].offsetWidth);
+            var cols=Math.floor($(document).width()/boxs[0].offsetWidth);
+            oparent.width(cols*boxs[0].offsetWidth).css("margin","0 auto");
+            console.log(cols);
+            var hArr=[];
+            boxs.each(function (index, value) {
+                if (index<cols){
+                    var h=boxs.eq(index).outerHeight();
+                    console.log(h);
+                    hArr.push(h);
+                }else{
+                    var minH=Math.min.apply(null,hArr);
+                    var minHIndex=$.inArray(minH,hArr);
+                    $(value).css({
+                        'position':'absolute',
+                        'top':minH+"px",
+                        'left':minHIndex*boxs[0].offsetWidth+'px'
+                    });
+                    hArr[minHIndex]+=$(value).outerHeight();
+
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<div id="main">
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/1.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/2.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/3.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/4.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/5.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/6.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/7.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/8.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/9.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/10.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/11.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/12.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/13.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/14.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/15.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/16.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/17.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/18.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/19.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/20.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/21.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/22.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/23.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/24.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/25.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/26.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/27.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/28.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/29.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/30.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/31.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/32.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/33.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/34.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/35.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/36.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/37.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/38.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/39.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/40.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/41.jpg"></div>
+    </div>
+
+
+
+
+</div>
+
+</body>
+</html>

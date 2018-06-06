@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D变换</title>
+    <style type="text/css">
+        div{
+            width: 120px;
+            height:50px;
+            text-align: center;
+            color:white;
+            font-size: 1.5rem;
+            -webkit-perspective: 200px;
+            -moz-perspective: 200px;
+            -ms-perspective: 200px;
+            -o-perspective: 200px;
+            perspective: 200px;
+            -webkit-transition: all .07s linear;
+            -moz-transition: all .07s linear;
+            -ms-transition: all .07s linear;
+            -o-transition: all .07s linear;
+            transition: all .07s linear;
+        }
+        div:hover {
+            cursor: pointer;
+        }
+        div:hover .span1{
+            -wekbit-transform: translateZ(-25px) rotateX(90deg);
+            -moz-transform: translateZ(-25px) rotateX(90deg);
+            -o-transform: translateZ(-25px) rotateX(90deg);
+            -ms-transform: translateZ(-25px) rotateX(90deg);
+            transform: translateZ(-25px) rotateX(90deg);
+        }
+        a{
+            text-decoration: none;
+            color:white;
+        }
+        .span1{
+            display: block;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 120px;
+            height:50px;
+            pointer-events: none;
+            -webkit-transition: all .3s ease-out;
+            -moz-transition: all .3s ease-out;
+            -ms-transition: all .3s ease-out;
+            -o-transition: all .3s ease-out;
+            transition: all .3s ease-out;
+            -webkit-transform: translatez(-25px);
+            -moz-transform: translatez(-25px);
+            -ms-transform: translatez(-25px);
+            -o-transform: translatez(-25px);
+            transform: translatez(-25px);
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-pointer-events: none;
+            -moz-pointer-events: none;
+            -ms-pointer-events: none;
+            -o-pointer-events: none;
+            pointer-events: none;
+        }
+        .front,.back{
+            display: block;
+            width: 120px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #297D94;
+        }
+        .front{
+            -webkit-transform: rotatex(0deg) translatez(25px);
+            -moz-transform: rotatex(0deg) translatez(25px);
+            -ms-transform: rotatex(0deg) translatez(25px);
+            -o-transform: rotatex(0deg) translatez(25px);
+            transform: rotatex(0deg) translatez(25px);
+        }
+        .back{
+            -webkit-transform: rotatex(-90deg) translatez(25px);
+            -moz-transform: rotatex(-90deg) translatez(25px);
+            -ms-transform: rotatex(-90deg) translatez(25px);
+            -o-transform: rotatex(-90deg) translatez(25px);
+            transform: rotatex(-90deg) translatez(25px);
+            color: #FFE7C4;
+        }
+        .wrapper {
+            display: inline-block;
+            width: 310px;
+            height: 100px;
+            vertical-align: top;
+            margin:0 auto;
+            cursor: pointer;
+            font-family: Tahoma, Arial;
+            -webkit-perspective: 4000px;
+            -moz-perspective: 4000px;
+            -ms-perspective: 4000px;
+            -o-perspective: 4000px;
+            perspective: 4000px;
+        }
+        .item{
+            height: 100px;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transition: -webkit-transform .6s;
+            -moz-transition: -moz-transform .6s;
+            -ms-transition: -ms-transform .6s;
+            -o-transition: -o-transform .6s;
+            transition: transform .6s;
+        }
+        .item:hover{
+            -webkit-transform:translateZ(-50px) rotateX(95deg);
+            -moz-transform:translateZ(-50px) rotateX(95deg);
+            -ms-transform:translateZ(-50px) rotateX(95deg);
+            -o-transform:translateZ(-50px) rotateX(95deg);
+            transform: translateZ(-50px) rotateX(95deg);
+        }
+        .item img {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 40px;
+            border-radius: 3px;
+            box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
+            -webkit-transform: translateZ(50px);
+            -moz-transform: translateZ(50px);
+            -ms-transform: translateZ(50px);
+            -o-transform: translateZ(50px);
+            transform: translateZ(50px);
+            width: 310px;
+            height: 100px;
+        }
+        .item .information {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 40px;
+            height: 80px;
+            width: 290px;
+            text-align: left;
+            border-radius: 15px;
+            padding: 10px;
+            font-size: 12px;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+            box-shadow: none;
+            background-color: #297D94;
+            -webkit-transform: rotateX(-90deg) translateZ(50px);
+            -moz-transform: rotateX(-90deg) translateZ(50px);
+            -ms-transform: rotateX(-90deg) translateZ(50px);
+            -o-transform: rotateX(-90deg) translateZ(50px);
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+        .information strong {
+            display: block;
+            margin: .2em 0 .5em 0;
+            font-size: 20px;
+            font-family: "Oleo Script";
+        }
+        #container {
+            margin: 0 auto;
+            width: 1024px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+<div>
+    <a href="#">3D变换</a>
+    <span class="span1">
+    <span class="front">3D变换</span>
+    <span class="back">3D变换</span>
+    </span>
+</div>
+<div class="wrapper">
+    <div class="item">
+        <img src="http://img.mukewang.com/545b1eb20001ed6a03360201.png" />
+        <span class="information">
+            <strong>改过迁善</strong>该剧讲述了金明民饰演的律师在失忆后回顾自己以往的所作所为心生忏悔，为弥补自己犯下的错误而与自己曾经工作过的律师事务所对簿公堂的故事。
+        </span>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

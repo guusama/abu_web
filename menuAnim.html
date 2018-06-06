@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            text-align:center;
+        }
+        p{
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0;
+            color:black;
+        }
+        #btn{
+            text-align: center;
+            width: 150px;
+            height: 55px;
+            border:2px solid #888888;
+            border-radius: 5px;
+            -moz-border-radius:5px;/*老的Firefox*/
+            font-size: 2rem;
+            margin: 0 auto;
+        }
+        #change{
+            width: 0px;
+            height: 10px;
+            background-color: #13d0a1;
+            margin: 10px auto 40px auto;
+            transition: width 2s;
+            -moz-transition: width 2s;	/* Firefox 4 */
+            -webkit-transition: width 2s;	/* Safari 和 Chrome */
+            -o-transition: width 2s;	/* Opera */
+        }
+    </style>
+</head>
+<body>
+<p>前端学院</p>
+<div id="change"></div>
+<div id="btn">切换样式</div>
+<script type="text/javascript">
+    var EventUtil= {
+        //添加事件
+        addHandler: function (element, type, handler) {
+            if (element.addEventListener) {
+                element.addEventListener(type, handler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent("on" + type, handler);
+            } else {
+                element["on" + type] = handler;
+            }
+        },
+        //删除事件
+        removeHandler: function (element, type, handler) {
+            if (element.removeEventListener) {
+                element.removeEventListener(type, handler, false);
+            } else if (element.detachEvent) {
+                element.detachEvent('on' + type, handler);
+            } else {
+                element['on' + type] = handler;
+            }
+        },
+        //获取event对象的引用
+        getEvent: function (event) {
+            return event ? event : window.event;
+        },
+        //获取事件的目标
+        getTarget: function (event) {
+            return event.target || event.scrElement;
+        }
+    }
+    var btn=document.getElementById('btn');
+    var change=document.getElementById('change');
+    var p=document.getElementsByTagName('p')[0];
+    var i=1;
+    EventUtil.addHandler(btn,'click',function () {
+        if(i%2==0){
+            change.style.width=0;
+            i++;
+            p.style.color='black';
+        }else{
+            change.style.width='200px';
+            i++;
+            p.style.color='#13d0a1';
+        }
+
+    })
+
+</script>
+</body>
+</html>

@@ -23,6 +23,13 @@
 		.right div{
 			background: gray;
 		}
+		.div1,.div2,.div4{
+			width: 100px;
+			height: 100px;
+			background-color: #13d0a1;
+			margin: 5px;
+		}
+
 	</style>
 </head>
 <body>
@@ -60,6 +67,122 @@
 		var reset=ele.data("a")+"</br>"+ele.data("b").name;
 		ele.find('span').append(reset);
 	});
+</script>
+<h1>通过clone克隆元素</h1>
+<div class="div1">clone浅拷贝</div>
+<div class="div2">clone深拷贝</div>
+<script type="text/javascript">
+	$('.div1').click(function () {
+        $('body').append($(this).clone().css('color','blue'));
+    });
+	$('.div2').on('click',function () {
+        $('body').append($(this).clone(true).css('color','red'));
+    });
+
+</script>
+<h1>input、textarea与select</h1>
+<div>
+	input：
+	<input class="input1" type="text" value="input" />
+</div>
+<div>
+	select:
+	<select class="select1">
+		<option value="option1" selected>option1</option>
+		<option value="option2">option2</option>
+		<option value="option3">option3</option>
+	</select>
+</div>
+<div>
+	<textarea rows="3" cols="5" class="textarea1">textarea</textarea>
+</div>
+<div>
+	输出结果：<p id="p1">ads</p>
+</div>
+<script type="text/javascript">
+    $('.input1').change(function(e) {
+        $("#p1").html(e.target.value)
+    });
+    $('.select1').change(function (e) {
+		alert("ahahah");
+		$('#p1').html(this.value);
+    })
+</script>
+<h1>自定义事件triggerHandler</h1>
+<div class="div3">
+	haha
+	<input type="text" class="input2"/>
+</div>
+	<button class="btn1">点击trigger</button>
+<script type="text/javascript">
+	$('.input2').focus(function (e) {
+		$(this).css('border','1px solid blue');
+    });
+	$('.div3').on('click',function () {
+        alert("trigger触发的事件会在 DOM 树中向上冒泡");
+    });
+	$('.btn1').on('click',function () {
+		$('.input2').triggerHandler('focus');
+    });
+</script>
+<h1>slideToggle</h1>
+<div class="div4"></div>
+<button class="btn2">点击slideToggle上下卷切换</button>
+<script type="text/javascript">
+	$('.btn2').click(function () {
+		$('.div4').slideToggle('slow');
+    })
+</script>
+<h1>fadeOut</h1>
+	<div class="test">
+		<p>测试文字淡入效果</p>
+		<p>慕课网，专注分享</p>
+	</div>
+<div>
+	淡出的隐藏效果：
+	<select class="fadeout">
+		<option value="1" selected>fadeOut/in()</option>
+		<option value="2">fadeOut/in('slow',0.5)</option>
+		<option value="3">fadeOut/in(3000,0.2)</option>
+		<option value="4">fadeOut/in(1000,complete)</option>
+		<option value="5">fadeOut/in(1000,'linear')</option>
+		<option value="6">fadeOut/in(options)</option>
+	</select>
+	<button class="hide">隐藏</button>
+	<button class="show">显示</button>
+</div>
+<script type="text/javascript">
+	var $opt=$('.fadeout');
+	$('.hide').click(function () {
+		switch($opt.val()){
+			case '1':$('.test').fadeToggle();break;
+            case '2':$('.test').fadeToggle('slow');break;
+            case '3':$('.test').fadeToggle(3000);break;
+            case '4':$('.test').fadeToggle(1000,function () {
+				alert('加载完毕');
+            });break;
+            case '5':$('.test').fadeToggle(1000,'linear');break;
+            case '6':$('.test').fadeToggle({
+				duration:2000
+			});break;
+
+		}
+    });
+	$('.show').click(function () {
+        switch($opt.val()){
+            case '1':$('.test').fadeIn();break;
+            case '2':$('.test').fadeTo('slow',0.5);break;
+            case '3':$('.test').fadeTo(3000,0.2);break;
+            case '4':$('.test').fadeIn(1000,function () {
+                alert('加载完毕');
+            });break;
+            case '5':$('.test').fadeIn(1000,'linear');break;
+            case '6':$('.test').fadeIn({
+                duration:2000
+            });break;
+
+        }
+    })
 </script>
 </body>
 </html>

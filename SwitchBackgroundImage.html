@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>切换背景图像</title>
+    <style type="text/css">
+        body{
+
+        }
+        .bg {
+            min-height: 100%;
+            min-width: 1024px;
+            width: 100%;
+            height: auto !important;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index:-1;
+        }
+        .clearfix{
+            list-style: none;
+            margin-top: 300px;
+            margin-left: 280px;
+            width: 800px;
+            position: absolute;
+            z-index: 9999;
+        }
+        .clearfix li{
+            display: inline-block;
+            width: 120px;
+            height: 70px;
+            border: 2px solid white;
+            border-radius: 8px;
+            margin-right: 10px;
+            padding-top: 50px;
+            text-align: center;
+        }
+        .clearfix li:nth-child(1){
+            background-color: #13d0a1;
+        }
+        .clearfix li:nth-child(2){
+            background-color: #df61ab;
+        }
+        .clearfix li:nth-child(3){
+            background-color: #ff8050;
+        }
+        .clearfix li:nth-child(4){
+            background-color: darkturquoise;
+        }
+        .clearfix li:nth-child(5){
+            background-color: slateblue;
+        }
+        .clearfix li a{
+            text-decoration: none;
+            color: white;
+            text-shadow: 2px 2px gray;
+        }
+        .clearfix a::after{
+            content:"";
+            display: block;
+            height: 100px;
+            width: 100px;
+            border: 5px solid #fff;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 9999;
+            margin-top: -160px;
+            margin-left: 5px;
+        }
+        .slider li:nth-of-type(1) a::after{
+            background: url("images/1.PNG"),no-repeat;
+        }
+        .slider li:nth-of-type(2) a::after{
+            background: url("images/2.PNG"),no-repeat;
+        }
+        .slider li:nth-of-type(3) a::after{
+            background: url("images/3.PNG"),no-repeat;
+        }
+        .slider li:nth-of-type(4) a::after{
+            background: url("images/4.PNG"),no-repeat;
+        }
+        .slider li:nth-of-type(5) a::after{
+            background: url("images/5.PNG"),no-repeat;
+        }
+        .slider li:nth-of-type(1):hover body{
+            background-color: #13d0a1;
+        }
+        .slider li:nth-of-type(2):hover body{
+            background: url("http://imgstore.cdn.sogou.com/app/a/100540002/673239.jpg"),no-repeat,center;
+        }
+        .slider li:nth-of-type(3):hover body{
+            background: url("http://i0.hdslb.com/bfs/archive/e8e4ab1e9eb1e26779a7a48e5120d8c2dd15d164.jpg"),no-repeat,center;
+        }
+        .slider li:nth-of-type(4):hover body{
+            background: url("http://f.hiphotos.baidu.com/zhidao/pic/item/bd3eb13533fa828b239a8f69f91f4134960a5afa.jpg"),no-repeat,center;
+        }
+        .slider li:nth-of-type(5):hover body{
+            background: url("http://f.hiphotos.baidu.com/zhidao/pic/item/b8014a90f603738ddce8b749b01bb051f819ec3f.jpg"),no-repeat,center;
+        }
+        .body:target{
+            background-color: #CD3333;
+        }
+        .slideLeft:target {
+            z-index: 100;
+        }
+        .slideBottom:target {
+            z-index: 100;
+        }
+        .zoomIn:target {
+            z-index: 100;
+        }
+        .zoomOut:target {
+            z-index: 100;
+        }
+        .rotate:target {
+            z-index: 100;
+        }
+
+    </style>
+</head>
+<body id="body">
+<div class="slider">
+    <ul class="clearfix">
+        <li><a href="#bg1">background image1</a></li>
+        <li><a href="#bg2">background image2</a></li>
+        <li><a href="#bg3">background image3</a></li>
+        <li><a href="#bg4">background image4</a></li>
+        <li><a href="#bg5">background image5</a></li>
+    </ul>
+</div>
+<img src="http://imgstore.cdn.sogou.com/app/a/100540002/673239.jpg" alt="" class="bg slideLeft" id="bg1" />
+<img src="http://i0.hdslb.com/bfs/archive/e8e4ab1e9eb1e26779a7a48e5120d8c2dd15d164.jpg" alt="" class="bg slideBottom" id="bg2" />
+<img src="http://f.hiphotos.baidu.com/zhidao/pic/item/bd3eb13533fa828b239a8f69f91f4134960a5afa.jpg" alt="" class="bg zoomIn" id="bg3" />
+<img src="http://f.hiphotos.baidu.com/zhidao/pic/item/b8014a90f603738ddce8b749b01bb051f819ec3f.jpg" alt="" class="bg zoomOut" id="bg4" />
+<img src="http://img3.duitang.com/uploads/item/201302/28/20130228192753_wQK8E.jpeg" alt="" class="bg rotate" id="bg5" />
+</body>
+</html>

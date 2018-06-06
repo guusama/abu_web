@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流布局</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #main{
+            position: relative;
+            -webkit-column-width: 190px;
+            -moz-column-width: 190px;
+            -ms-column-width: 190px;
+            -o-column-width: 190px;
+            column-width: 190px;
+
+        }
+        .box{
+            padding: 15px 0 0 15px;
+            float: left;
+        }
+        .pic{
+            padding: 5px;
+
+            border-radius: 5px;
+            box-shadow: 2px 2px 6px gray;
+        }
+        .pic img{
+            width: 165px;
+            height: auto;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function () {
+            //waterFall('main','box');
+            var dataInt={"data":[{"src":"51.jpg"},{"src":"52.jpg"},{"src":"53.jpg"},{"src":"53.jpg"},{"src":"54.jpg"},{"src":"55.jpg"},
+                    {"src":"56.jpg"},{"src":"57.jpg"},{"src":"58.jpg"},{"src":"59.jpg"},{"src":"60.jpg"},{"src":"61.jpg"},{"src":"62.jpg"},
+                    {"src":"63.jpg"},{"src":"64.jpg"},{"src":"65.jpg"},{"src":"66.jpg"},{"src":"67.jpg"},{"src":"68.jpg"},{"src":"69.jpg"},
+                    {"src":"70.jpg"},{"src":"71.jpg"},{"src":"72.jpg"},]};
+            window.onscroll=function () {
+                if (scrollFun){
+                    var oparent=document.getElementById('main');
+                    for(var i=0;i<dataInt.data.length;i++){
+                        var obox=document.createElement("div");
+                        obox.className='box';
+                        oparent.appendChild(obox);
+                        var oPic=document.createElement('div');
+                        oPic.className='pic';
+                        obox.appendChild(oPic);
+                        var oimg=document.createElement('img');
+                        oimg.src="waterFallImages/"+dataInt.data[i].src;
+                        oPic.appendChild(oimg);
+                    }
+                    //waterFall('main','box');
+                }
+            }
+        }
+        //主函数
+        function  waterFall(main,box) {
+            var main1=document.getElementById(main);
+            var boxs=getByClass(main1,box);
+            console.log(boxs.length);
+            var boxW=boxs[0].offsetWidth;
+            var cols=Math.floor(document.documentElement.clientWidth/boxW);//获取列数
+            main1.style.cssText='width:'+boxW*cols+'px;margin:0 auto';
+            console.log(cols);
+            //找到height最低的元素使后面元素放在其列下
+            var boxHs=[];
+            var minH=0,index=0;
+            for(var i=0;i<boxs.length;i++){
+                if (i<cols){
+                    boxHs.push(boxs[i].offsetHeight);
+                    //console.log(boxHs[i]);
+                } else{
+                    minH=Math.min.apply(null,boxHs);
+                    console.log(minH);
+                    index=getMinIndex(boxHs,minH);
+                    boxs[i].style.position='absolute';
+                    boxs[i].style.top=minH+'px';
+                    boxs[i].style.left=boxs[index].offsetLeft+'px';
+                    boxHs[index]+=boxs[i].offsetHeight;
+                }
+            }
+
+        }
+        //按class名来获取元素
+        function getByClass(parent,clsName){
+            var childs=parent.getElementsByTagName('*');
+            var result=[];
+            for (var i=0;i<childs.length;i++){
+                if (childs[i].className==clsName){
+                    result.push(childs[i]);
+                }
+            }
+            return result;
+        }
+        //获得height最低的元素的索引值
+        function getMinIndex(boxHs,minH) {
+            for (var i in boxHs){
+                if (boxHs[i]==minH){
+                    return i;
+                }
+            }
+        }
+        //判断是否符合加载图片的条件
+        function scrollFun() {
+            var main1=document.getElementById('main');
+            var boxs=getByClass(main1,'box');
+            var lastH=boxs[boxs.length-1].offsetTop+(boxs[boxs.length-1].offsetHeight/2);
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            var clientHeight=document.documentElement.clientHeight||document.body.clientHeight;
+            var scrollH=scrollTop+clientHeight;
+            return lastH<scrollH;
+        }
+    </script>
+</head>
+<body>
+<div id="main">
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/1.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/2.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/3.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/4.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/5.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/6.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/7.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/8.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/9.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/10.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/11.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/12.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/13.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/14.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/15.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/16.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/17.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/18.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/19.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/20.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/21.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/22.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/23.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/24.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/25.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/26.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/27.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/28.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/29.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/30.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/31.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/32.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/33.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/34.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/35.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/36.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/37.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/38.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/39.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/40.jpg"></div>
+    </div>
+    <div class="box">
+        <div class="pic"><img src="waterFallImages/41.jpg"></div>
+    </div>
+
+
+
+
+</div>
+
+</body>
+</html>
